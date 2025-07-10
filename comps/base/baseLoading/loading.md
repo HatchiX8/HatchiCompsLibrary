@@ -70,15 +70,15 @@ infoLoading,
 🎯 使用方式範例(vue 元件)
 
 <!-- components/InspectView.vue -->
-<template>
-  <loadingAreaOverlay :id="inspectStore.infoLoading">
-    <div>
-      <infoComponent :data="inspectStore.l2_infoList" />
-    </div>
-  </loadingAreaOverlay>
-</template>
+  <template>
+    <loadingAreaOverlay :id="inspectStore.infoLoading">
+      <div>
+        <infoComponent :data="inspectStore.l2_infoList" />
+      </div>
+    </loadingAreaOverlay>
+  </template>
 
-<script setup lang="ts">
-import { useInspectStore } from '@/stores';
-const inspectStore = useInspectStore();
-</script>
+  <script setup lang="ts">
+  import { useInspectStore } from '@/stores';
+  const inspectStore = useInspectStore();
+  </script>
