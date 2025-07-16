@@ -1,6 +1,6 @@
 <template>
   <baseButton color="primary">按鈕</baseButton>
-  <buttonGroup v-model="selected" options="categoryOptions" />
+  <buttonGroup v-model="selected" :options="categoryOptions" />
 </template>
 <script setup lang="ts">
 // ----------import----------

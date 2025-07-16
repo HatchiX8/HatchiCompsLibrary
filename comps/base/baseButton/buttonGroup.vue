@@ -1,19 +1,18 @@
 <template>
   <div class="flex gap-2">
-    <toggleButton
+    <n-button
       v-for="btn in options"
       :key="btn.value"
-      :active="modelValue === btn.value"
+      strong
+      :type="modelValue === btn.value ? 'primary' : 'default'"
       @click="() => emit('update:modelValue', btn.value)"
     >
       {{ btn.label }}
-    </toggleButton>
+    </n-button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { toggleButton } from '@/components/index';
-
 defineProps<{
   modelValue: string;
   options: Array<{ label: string; value: string }>;
