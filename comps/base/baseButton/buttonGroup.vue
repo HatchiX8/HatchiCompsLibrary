@@ -3,7 +3,6 @@
     <n-button
       v-for="btn in options"
       :key="btn.value"
-      strong
       :type="modelValue === btn.value ? 'primary' : 'default'"
       @click="() => emit('update:modelValue', btn.value)"
     >
