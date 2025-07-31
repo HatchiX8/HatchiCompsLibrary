@@ -23,7 +23,6 @@
 import { computed, ref, watch } from 'vue';
 
 interface Props {
-  columns: object[];
   data: object[];
   pageSize?: number;
   striped?: boolean;
@@ -35,6 +34,12 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
+// ----------欄位設定----------
+const columns = [
+  { title: 'Coil_ID', key: 'coil_id', align: 'center', width: '10%' },
+  { title: 'Time', key: 'time', align: 'center', width: '15%' },
+];
 
 // ----------分頁設定----------
 const pagination = ref({

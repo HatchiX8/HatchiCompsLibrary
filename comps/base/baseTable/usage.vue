@@ -1,5 +1,5 @@
 <template>
-  <paginationTable :columns="columns" :data="fakeData" :pageSize="10" />
+  <paginationTable :data="fakeData" :pageSize="10" />
 </template>
 <script setup lang="ts">
 // ----------import----------
@@ -13,11 +13,6 @@ import { paginationTable } from '@/comps/base/baseTable';
 
 // ---------------------------
 
-// ----------欄位設定----------
-const columns = [
-  { title: 'Coil_ID', key: 'coil_id', align: 'center', width: '10%' },
-  { title: 'Time', key: 'time', align: 'center', width: '15%' },
-];
 // ----------假資料----------
 const fakeData = [
   {
