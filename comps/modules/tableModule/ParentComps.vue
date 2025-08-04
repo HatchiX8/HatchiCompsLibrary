@@ -106,7 +106,7 @@ const handleFiltersChange = ({
   filters,
   columns,
 }: {
-  filters: Record<string, number[]>;
+  filters: Record<string, (string | number)[]>;
   columns: Column[];
 }) => {
   setFilters(filters); // 呼叫封裝好的篩選器函式

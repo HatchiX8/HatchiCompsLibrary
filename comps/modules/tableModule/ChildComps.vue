@@ -230,7 +230,10 @@ const handleRowClick = (row: tableRow) => {
 const emit = defineEmits<{
   (e: 'row-click', row: tableRow): void;
   (e: 'update:sorter', sorter: { columnKey?: string; order: 'ascend' | 'descend' | null }): void;
-  (e: 'update:filters', payload: { filters: Record<string, number[]>; columns: Column[] }): void;
+  (
+    e: 'update:filters',
+    payload: { filters: Record<string, (string | number)[]>; columns: Column[] }
+  ): void;
   (e: 'clear-filters', columns: Column[]): void;
 }>();
 
@@ -247,13 +250,13 @@ const handleSorterChange = (sorter: { columnKey: string; order: Order }) => {
   });
 };
 // 篩選器emit事件
-const handleFiltersChange = (filters: Record<string, number[]>) => {
+const handleFiltersChange = (filters: Record<string, (string | number)[]>) => {
   emit('update:filters', { filters, columns: columns.value }); // 通知父元件有篩選條件更新
 };
 
 // 清除篩選器emit事件
 const clearFilters = () => {
-  const clearedFilters: Record<string, number[]> = {};
+  const clearedFilters: Record<string, (string | number)[]> = {};
 
   // 清除所有勾選項目
   columns.value.forEach((col) => {

@@ -4,7 +4,7 @@ import type { Sorter } from '../type/index';
 
 export const useTableData = <T extends Record<string, string | number | null>>(
   data: Ref<T[]>,
-  filterValues: Ref<Partial<Record<keyof T, number[]>>>,
+  filterValues: Ref<Partial<Record<keyof T, (string | number)[]>>>,
   sorter: Ref<Sorter<T>>,
   filterableKeys: (keyof T)[]
 ) => {
