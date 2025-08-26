@@ -1,10 +1,5 @@
 <template>
-  <n-button
-    :theme-overrides="buttonThemeOverrides"
-    type="primary"
-    class="text-4 font-bold"
-    v-bind="$attrs"
-  >
+  <n-button :theme-overrides="buttonThemeOverrides" type="primary" v-bind="$attrs">
     <slot
   /></n-button>
 </template>
