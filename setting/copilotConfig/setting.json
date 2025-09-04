@@ -1,0 +1,129 @@
+{
+  // ---------- github copilot ---------- //
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": true,
+    "yaml": true,
+    "html": true,
+    "powershell": true,
+    "javascript": true,
+    "typescript": true, // 加上 TS
+    "typescriptreact": true, // 加上 TSX (React / Vue SFC script setup)
+    "vue": true, // 如果你有 Vue，最好也加
+    "aspnetcorerazor": true
+  },
+  "chat.editing.confirmEditRequestRemoval": true,
+  "chat.editing.confirmEditRequestRetry": true,
+  "telemetry.telemetryLevel": "off",
+
+  "window.commandCenter": true,
+  "chat.commandCenter.enabled": true,
+
+  "github.copilot.editor.enableCodeActions": true,
+  "github.copilot.renameSuggestions.triggerAutomatically": true,
+  "workbench.commandPalette.experimental.askChatLocation": "chatView",
+  "search.searchView.semanticSearchBehavior": "runOnEmpty",
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "editor.inlineSuggest.edits.showCollapsed": true,
+
+  // GitHub Copilot Chat
+  "github.copilot.chat.localeOverride": "zh-TW",
+  "github.copilot.chat.useProjectTemplates": true,
+  "github.copilot.chat.scopeSelection": true, // copilot回答只會針對選取範圍 false會讀取整個檔案 (兩者都不會延伸到專案其他檔案)
+  "chat.detectParticipant.enabled": false, //控制 Chat 系統要不要 自動偵測對話參與者。 單人使用皆關閉即可
+  "chat.promptFiles": true,
+  "github.copilot.chat.languageContext.typescript.enabled": true,
+  "github.copilot.chat.agent.thinkingTool": true,
+
+  // GitHub Copilot Chat - 內嵌聊天 (Inline Chat)
+  "github.copilot.chat.editor.temporalContext.enabled": true,
+  "inlineChat.holdToSpeech": false, // 麥克風語音輸入
+  "inlineChat.finishOnType": false,
+
+  // GitHub Copilot Chat - 偵錯相關設定
+  "github.copilot.chat.startDebugging.enabled": true,
+  "github.copilot.chat.reviewSelection.enabled": true,
+  "github.copilot.chat.copilotDebugCommand.enabled": true,
+  "github.copilot.chat.edits.temporalContext.enabled": false,
+
+  // GitHub Copilot Chat - 測試相關設定
+  "github.copilot.chat.setupTests.enabled": true, //啟用自動建立測試環境。
+  "github.copilot.chat.generateTests.codeLens": true, //在程式碼上方顯示「生成測試」按鈕。
+  // 指定一份規則文件 + 額外提示文字，讓 Copilot 生成的測試更符合團隊標準。
+  "github.copilot.chat.testGeneration.instructions": [
+    {
+      "file": ".copilot-test-instructions.md"
+    },
+    {
+      "text": "Always try uniting related tests in a suite."
+    }
+  ],
+
+  // GitHub Copilot Chat - 自訂提示
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+
+  // 程式碼生成規則。
+  "github.copilot.chat.codeGeneration.instructions": [
+    {
+      "text": "Always response in #zh-tw."
+    },
+    {
+      "file": ".copilot-instructions.md"
+    }
+  ],
+  // 程式碼審查規則。
+  "github.copilot.chat.reviewSelection.instructions": [
+    { "file": ".copilot-review-instructions.md" },
+    { "text": "Always response in #zh-tw." }
+  ],
+
+  // GitHub Copilot Chat - 自訂 Git Commit 訊息提示
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "# Use Conventional Commits 1.0.0 for commit messages."
+    },
+    {
+      "text": "請一律使用正體中文來撰寫記錄"
+    },
+    {
+      "file": ".copilot-commit-message-instructions.md"
+    }
+  ],
+
+  // GitHub Copilot Chat - 自訂 Pull Request 描述提示
+  "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+    {
+      "text": "請一律使用正體中文來撰寫記錄"
+    },
+    {
+      "file": ".copilot-pull-request-description-instructions.md"
+    }
+  ],
+
+  // GitHub Copilot Chat Edit
+  "github.copilot.chat.edits.suggestRelatedFilesForTests": true,
+  "github.copilot.chat.edits.suggestRelatedFilesFromGitHistory": true,
+
+  // GitHub Copilot Chat - Agent Mode
+  "chat.agent.enabled": false, // 單人開發先關閉此功能
+  "chat.agent.maxRequests": 100,
+  "github.copilot.chat.agent.runTasks": true,
+  "github.copilot.chat.codesearch.enabled": true,
+  "github.copilot.chat.newWorkspaceCreation.enabled": true,
+  "terminal.integrated.scrollback": 50000, // Agent Mode 建議調高預設 Terminal 的捲軸行數
+
+  "chat.mcp.enabled": false, // 單人開發先關閉此功能
+  "chat.mcp.discovery.enabled": false,
+  // "chat.mcp.discovery.enabled": {
+  //     "claude-desktop": false,
+  //     "windsurf": false,
+  //     "cursor-global": false,
+  //     "cursor-workspace": false
+  // },
+  "mcp": {
+    "servers": {}
+  }
+  // ---------- ------------------------ //
+}
