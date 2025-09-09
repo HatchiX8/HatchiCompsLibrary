@@ -1,12 +1,13 @@
 <template>
-  <paginationTable :data="fakeData" :pageSize="10" />
+  <paginationTable :data="fakeData" :columns="columns" :pageSize="10" />
 </template>
-<script setup lang="ts">
+<script setup lang="ts" generic="Row extends Record<string, unknown>">
 // ----------import----------
 // 套件
 import { ref } from 'vue';
 // store
 // 共用型別
+import type { DataTableColumns } from 'naive-ui';
 // 元件
 import { paginationTable } from '@/comps/base/baseTable';
 // 商業邏輯
@@ -106,6 +107,11 @@ const fakeData = [
   },
 ];
 
-// ----------區域-----------
+// ----------欄位設定----------
+const columns: DataTableColumns<Row> = [
+  { title: 'Coil_ID', key: 'coil_id', align: 'center', width: '10%' },
+  { title: 'Time', key: 'time', align: 'center', width: '15%' },
+];
+
 // -------------------------
 </script>

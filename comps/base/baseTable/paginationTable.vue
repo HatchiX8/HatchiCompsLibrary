@@ -19,11 +19,13 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" generic="Row extends Record<string, unknown>">
 import { computed, ref, watch } from 'vue';
+import type { DataTableColumns } from 'naive-ui';
 
 interface Props {
-  data: object[];
+  data: Row[];
+  columns: DataTableColumns<Row>;
   pageSize?: number;
   striped?: boolean;
   bordered?: boolean;
@@ -34,12 +36,6 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-
-// ----------欄位設定----------
-const columns = [
-  { title: 'Coil_ID', key: 'coil_id', align: 'center', width: '10%' },
-  { title: 'Time', key: 'time', align: 'center', width: '15%' },
-];
 
 // ----------分頁設定----------
 const pagination = ref({
