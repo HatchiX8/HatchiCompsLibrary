@@ -1,5 +1,5 @@
 <template>
-  <n-modal v-model:show="show" :mask-closable="false">
+  <n-modal v-model:show="modelValue" :mask-closable="false">
     <n-card :style="{ width }" :title="title" :bordered="false">
       <slot />
       <template #footer>
@@ -13,17 +13,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, toRefs } from 'vue';
 
-const props = withDefaults(
-  defineProps<{
-    modelValue: boolean;
-    title?: string;
-    width?: string;
-    okLoading?: boolean;
-  }>(),
-  { title: '視窗', width: '600px', okLoading: false }
-);
+const props = withDefaults(defineProps<{
+  modelValue: boolean;
+  title?: string;
+  width?: string;
+  okLoading?: boolean;
+}>(), { 
+  title: '視窗', 
+  width: '600px', 
+  okLoading: false 
+});
 
 const emit = defineEmits<{
   'update:modelValue': [boolean];
@@ -31,16 +31,9 @@ const emit = defineEmits<{
   cancel: [];
 }>();
 
-const { modelValue } = toRefs(props);
-const show = ref(modelValue.value);
-watch(modelValue, (v) => (show.value = v));
-watch(show, (v) => emit('update:modelValue', v));
-
-const onOk = () => {
-  emit('ok');
-};
+const onOk = () => emit('ok');
 const onCancel = () => {
-  show.value = false;
+  emit('update:modelValue', false);
   emit('cancel');
 };
 </script>
