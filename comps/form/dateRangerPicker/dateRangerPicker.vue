@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref,onMounted } from 'vue';
 import dayjs from 'dayjs';
 
 // ---------- type ----------
@@ -79,6 +79,15 @@ const innerValue = ref<[number, number] | null>(props.defaultValue ?? null);
 const pickerStatus = ref<PickerStatus>();
 const errorMsg = ref('');
 // ------------------------------
+
+// ----------初始化----------
+// 有初始值時主動emit一次，讓父層拿到格式化後的日期
+onMounted(() => {
+  if (props.defaultValue) {
+    emit('update:value', formatRangeDate(props.defaultValue));
+  }
+});
+// -------------------------
 
 // ---------- 日期切換 ----------
 const handleChange = (val: [number, number] | null) => {
