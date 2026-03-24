@@ -15,20 +15,13 @@ import * as echarts from 'echarts';
 
 // ----------type----------
 interface ChartData {
-  date: string[];
-  countW: number[];
-  countG: number[];
-  countR: number[];
-  countY: number[];
-  all_Count: number[];
+  title: string;
 }
 // ------------------------
 
 // ----------props&emit----------
 const props = defineProps<{
   chartData: ChartData;
-  chartUnit: string;
-  intervalData: number;
 }>();
 
 // const emit = defineEmits<{
@@ -89,6 +82,9 @@ const renderCharts = () => {
 
 // 可抽換趨勢圖內容
 const getChartOption = (data: ChartData): echarts.EChartsCoreOption => ({
+  title: {
+    text: data.title,
+  },
   xAxis: {
     type: 'category',
     data: ['1月', '2月', '3月', '4月', '5月', '6月'], // 月度數據
