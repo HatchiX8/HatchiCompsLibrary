@@ -1,5 +1,5 @@
 <template>
-  <div class="h-80 w-full bg-white" ref="chartDom"></div>
+  <div :class="['w-full bg-white', props.height ?? 'h-80']"  ref="chartDom"></div>
 </template>
 <script setup lang="ts">
 // ----------import----------
@@ -16,12 +16,16 @@ import * as echarts from 'echarts';
 // ----------type----------
 interface ChartData {
   title: string;
+  xAxisData: string[]; // x 軸類別
+  seriesData: number[]; // 數值資料
+  seriesName?: string; // 可選，系列名稱
 }
 // ------------------------
 
 // ----------props&emit----------
 const props = defineProps<{
   chartData: ChartData;
+  height?: string; 
 }>();
 
 // const emit = defineEmits<{
@@ -67,7 +71,7 @@ watch(
       renderCharts();
     });
   },
-  { deep: true, immediate: true }
+  { deep: true },
 );
 // -------------------------
 
@@ -87,20 +91,15 @@ const getChartOption = (data: ChartData): echarts.EChartsCoreOption => ({
   },
   xAxis: {
     type: 'category',
-    data: ['1月', '2月', '3月', '4月', '5月', '6月'], // 月度數據
+    data: data.xAxisData,         // 改為動態
   },
-  yAxis: {
-    type: 'value',
-  },
+  yAxis: { type: 'value' },
   series: [
     {
-      data: [150, 200, 170, 250, 300, 220], // 模擬數據
+      name: data.seriesName,
+      data: data.seriesData,       // 改為動態
       type: 'line',
-
-      label: {
-        show: true,
-        position: 'top', // 數據點標籤
-      },
+      label: { show: true, position: 'top' },
     },
   ],
   tooltip: {

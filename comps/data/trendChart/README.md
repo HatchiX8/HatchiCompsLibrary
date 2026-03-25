@@ -9,8 +9,6 @@
 ```vue
 <TrendChart
   :chartData="myData"
-  chartUnit="件"
-  :intervalData="5"
 />
 ```
 
@@ -18,22 +16,19 @@
 
 ## Props
 
-| 名稱           | 型別        | 必填 | 說明                         |
-|--------------|-----------|:--:|----------------------------|
-| `chartData`  | `ChartData` | ✅  | 圖表所需的資料物件                  |
-| `chartUnit`  | `string`  | ✅  | Y 軸或 Tooltip 顯示的單位（例如：`件`） |
-| `intervalData` | `number` | ✅  | 資料間隔設定                     |
+| 名稱          | 型別        | 必填 | 說明              |
+|-------------|-----------|:--:|-----------------|
+| `chartData` | `ChartData` | ✅  | 圖表所需的資料物件 |
+| `height`    | `string`    | ❌  | `h-80` | 容器高度（Tailwind CSS class） |
 
 ### ChartData 型別定義
 
 ```ts
 interface ChartData {
-  date: string[];      // X 軸日期標籤
-  countW: number[];    // 白色類別數量
-  countG: number[];    // 綠色類別數量
-  countR: number[];    // 紅色類別數量
-  countY: number[];    // 黃色類別數量
-  all_Count: number[]; // 總數量
+  title: string;       // 圖表標題
+  xAxisData: string[]; // X 軸類別標籤
+  seriesData: number[]; // 數值資料
+  seriesName?: string; // 可選，系列名稱（顯示於 Tooltip）
 }
 ```
 
@@ -52,7 +47,7 @@ interface ChartData {
 
 > ⚠️ ECharts 實例使用 `markRaw` 包裝，避免 Vue 響應式系統代理導致 Tooltip 顯示異常。
 
-> ⚠️ 目前 `getChartOption` 內部使用模擬資料，尚未接入 `props.chartData`，需依業務需求完成實作。
+> ⚠️ 目前容器高度固定為 `h-80`（Tailwind CSS），若需自訂高度請直接修改元件樣式。
 
 ---
 
